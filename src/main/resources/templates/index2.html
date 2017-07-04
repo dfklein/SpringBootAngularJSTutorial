@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1" />
+<title>Insert title here</title>
+<script type="text/javascript">
+<!-- A linha abaixo é usada para fazer ele aceitar o & no javascript. Assim o processador javascript o entende como um caractere que não é um símbolo da tabela ASCII -->
+//<![CDATA[
+	function carregarDados() {
+		var xhttp = new XMLHttpRequest();
+		xhttp.onreadystatechange = function() {
+			if (this.readyState == 4 && this.status == 200) {
+				document.getElementById("display").innerHTML = this.responseText;
+			}
+		};
+		xhttp.open("GET", "http://localhost:8080/SpringBootAngularJSTutorial/clientes/", true);
+		xhttp.send();
+	}
+//]]>
+</script>
+</head>
+<body>
+	<h2>teste</h2>
+	<div id="display">
+	
+	</div>
+</body>
+<script type="text/javascript">
+	carregarDados();
+</script>
+</html>

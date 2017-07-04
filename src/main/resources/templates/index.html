@@ -1,31 +1,17 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="appCliente">
 <head>
 <meta charset="ISO-8859-1" />
 <title>Insert title here</title>
-<script type="text/javascript">
-<!-- A linha abaixo é usada para fazer ele aceitar o & no javascript. Assim o processador javascript o entende como um caractere que não é um símbolo da tabela ASCII -->
-//<![CDATA[
-	function carregarDados() {
-		var xhttp = new XMLHttpRequest();
-		xhttp.onreadystatechange = function() {
-			if (this.readyState == 4 && this.status == 200) {
-				document.getElementById("display").innerHTML = this.responseText;
-			}
-		};
-		xhttp.open("GET", "http://localhost:8080/SpringBootAngularJSTutorial/clientes/", true);
-		xhttp.send();
-	}
-//]]>
-</script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="./js/app.js"></script>
 </head>
-<body>
-	<h2>teste</h2>
-	<div id="display">
+<body ng-controller="indexController">
+	{{ nome + ' ' + sobrenome }}
+	{{ clientes }}
 	
+	<div ng-repeat="cli in clientes">
+		{{cli.nome}}
 	</div>
 </body>
-<script type="text/javascript">
-	carregarDados();
-</script>
 </html>

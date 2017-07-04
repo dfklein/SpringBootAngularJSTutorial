@@ -10,4 +10,9 @@ public class HomeController {
 	public String irParaHome() {
 		return "index";
 	}
+	
+	@RequestMapping("/home2")
+	public String irParaHomeDois() {
+		return "index2";
+	}
 }

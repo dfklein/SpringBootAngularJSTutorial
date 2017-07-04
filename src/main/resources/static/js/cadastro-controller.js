@@ -1,0 +1,4 @@
+/**
+ * 
+ */
+appCliente.conrtroller("cadastroController", function() {});
