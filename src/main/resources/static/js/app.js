@@ -28,22 +28,41 @@ appCliente.controller('indexController', function($scope, $http) { // $scope é 
 															// controller (suas
 															// variáveis, por
 															// exemplo)
-	$scope.nome = 'Denis';
-	$scope.sobrenome = 'Klein';
+	$scope.clientes=[];
+	$scope.cliente={}
 	
-	$http({
-		method:'GET',
-		url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/'
-			//Você passa dois parâmetros: uma função de sucesso do callback e outr de exceção.
-	}).then(function successCallBack(response){
-		console.log(response.data);
-		console.log(response.status);
-		$scope.clientes = response.data;
-		
-	}, function errorCallBack(response) {
-		console.log(response.data);
-		console.log(response.status);
-		
-	});
+	$scope.carregarClientes = function() {
+		$http({
+			method:'GET',
+			url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/'
+				//Você passa dois parâmetros: uma função de sucesso do callback e outr de exceção.
+		}).then(function successCallBack(response){
+			console.log(response.data);
+			console.log(response.status);
+			$scope.clientes = response.data;
+			
+		}, function errorCallBack(response) {
+			console.log(response.data);
+			console.log(response.status);
+			
+		});
+	}
+	
+	$scope.salvarClientes = function() {
+		$http({
+			method:'POST',
+			url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/',
+			data:$scope.cliente
+		}).then(function (response){
+			$scope.clientes.push(response.data);
+//			console.log(response.status);
+//			$scope.clientes = response.data;
+		}, function (response) {
+			console.log(response.data);
+			console.log(response.status);
+			
+		});
+	}
+	
 
 });
