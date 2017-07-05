@@ -1,4 +1,0 @@
-/**
- * 
- */
-appCliente.conrtroller("cadastroController", function() {});

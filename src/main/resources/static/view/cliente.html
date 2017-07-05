@@ -1,0 +1,19 @@
+<!-- Existem duas formas de declarar o controller: no html (como na linha abaixo) ou no JavaScript (veja o arquivo cliente-controller.js) -->
+<!-- <div ng-controller="clienteController"> -->
+
+<div>
+Oi :D {{cliente.nome}} <br/>
+
+<input type="text" ng-model="cliente.nome"/>
+
+<input type="button" value="Salvar" ng-click="salvarCliente()"/>
+<input type="button" value="Cancelar" ng-click="cancelarAlteracaoCliente()"/>
+
+<div ng-repeat="cli in clientes">
+	{{cli.id + '|' + cli.nome}} 
+	<input type="button" value="Excluir" ng-click="excluirCliente(cli)"/> 
+	<input type="button" value="Alterar" ng-click="alterarCliente(cli)"/>
+	<a href="clientes/{{cli.id}}" > Detalhe</a>
+</div>
+
+</div>

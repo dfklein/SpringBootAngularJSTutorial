@@ -1,4 +1,0 @@
-/**
- * 
- */
-appCliente.conrtroller("contatoController", function() {});

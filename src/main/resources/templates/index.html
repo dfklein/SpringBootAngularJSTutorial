@@ -1,20 +1,25 @@
 <!DOCTYPE html>
 <html ng-app="appCliente">
 <head>
-<meta charset="ISO-8859-1" />
+<meta charset="UTF-8"/>
 <title>Insert title here</title>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 <script src="./js/app.js"></script>
+<script src="./js/controller/cliente-controller.js"></script>
+<script src="./js/controller/estado-controller.js"></script>
+<script src="./js/controller/cidade-controller.js"></script>
 </head>
-<body ng-controller="indexController">
-<!-- 	{{ nome + ' ' + sobrenome }} -->
-<!-- 	{{ clientes }} -->
+<body>
+	<h2>Aqui é o template</h2>
+	<a href="#/clientes">Clientes</a> <!-- Quando você coloca o # no link, você está indicando que ele não chama o servidor e buscará o mapeamento do Angular na configuração de rotas (ver o arquivo cliente-controller.js) -->
 	
-	<input type="text" ng-model="cliente.nome" />
-	<input type="button" value="Salvar" ng-click="salvarCliente()"/>
-	<input type="button" value="Carregar" ng-click="carregarClientes()"/>
-	<div ng-repeat="cli in clientes">
-		{{cli.id + ' / ' + cli.nome}}
-	</div><br />
+	<!-- A div abaixo é o espaço que está preparado para o Angular colocar as views que são carregadas pelo mapeamento de rotas -->
+	<!-- Teoricamente você precisa apenas usar a diretiva ng-view sem nenhum parâmetro. Neste caso o '="ng-view"' existe por causa do Spring que vai reclamar se isto não existir (ou seja: você pode por qualquer coisa ali dentro) -->
+	<!-- É tipo o "include" do Angular -->
+	<div ng-view="ng-view">
+		
+	</div>
+
 </body>
 </html>
