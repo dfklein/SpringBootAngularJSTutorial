@@ -9,17 +9,30 @@ var appCliente = angular.module('appCliente', ['ngRoute']); // os colchetes são
 													// da aplicação).
 
 //Esta é uma configuração de rotas, onde você mapeia as requisições do Angular que não chamam o servidor.
-appCliente.config(function($routeProvider){
+appCliente.config(function($routeProvider, $locationProvider){
 	// o primeiro parâmetro é a URL que você está mapeando e a segunda é um JSON com configurações.
 	$routeProvider
 	.when('/clientes', {
 		// os parâmetros abaixo são respectivamente a URL chamada e o controller utilizado. Desta forma você não utilizaria o "ng-controller" no html. Ver a página cliente.html
-		templateUrl:'view/cliente.html',
+		templateUrl:'SpringBootAngularJSTutorial/view/cliente.html',
 		controller:'clienteController'
+	})
+	.when('/cidade', {
+		templateUrl:'SpringBootAngularJSTutorial/view/cidade.html',
+		controller:'cidadeController'
+		
+	})
+	.when('/estado', {
+		templateUrl:'SpringBootAngularJSTutorial/view/estado.html',
+		controller:'estadoController'
+			
 	})
 	// o otherwise seria um tipo de "else" para a declaração de rotas, onde você passa a url que será direcionado caso haja uma requisição para uma rota inexistente.
 	.otherwise({
 		redirectTo:'/'
 	});
+	
+	$locationProvider.hashPrefix('');
+	$locationProvider.html5Mode(true);
 
 });
