@@ -17,6 +17,11 @@ appCliente.config(function($routeProvider, $locationProvider){
 		templateUrl:'SpringBootAngularJSTutorial/view/cliente.html',
 		controller:'clienteController'
 	})
+	.when('/clientes/:clienteId', { // Quando você coloca na URL algom com ":algumaCoisa" você está avisando ao Angular que este padrão recebe um parâmetro.
+		templateUrl:'SpringBootAngularJSTutorial/view/cliente-detalhes.html',
+		controller:'clienteDetalhesController'
+		
+	})
 	.when('/cidade', {
 		templateUrl:'SpringBootAngularJSTutorial/view/cidade.html',
 		controller:'cidadeController'
@@ -32,6 +37,7 @@ appCliente.config(function($routeProvider, $locationProvider){
 		redirectTo:'/'
 	});
 	
+	// as duas linhas abaixo eliminam o #! da URL nas chamadas sem requisição para o servidor.
 	$locationProvider.hashPrefix('');
 	$locationProvider.html5Mode(true);
 

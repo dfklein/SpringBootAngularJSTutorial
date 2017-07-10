@@ -6,24 +6,28 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
 	<script src="./js/app.js"></script>
+	<script src="./js/controller/main-controller.js"></script>
 	<script src="./js/controller/cliente-controller.js"></script>
+	<script src="./js/controller/cliente-detalhes-controller.js"></script>
 	<script src="./js/controller/estado-controller.js"></script>
 	<script src="./js/controller/cidade-controller.js"></script>
 	
 	<base href="/" />
 </head>
-<body>
+<body ng-controller="mainController">
 	<h2>Aqui é o template</h2>
 	<!-- OBS: em versões anteriores do Angular, a rota é chamada apenas com o #, sem a exclamação -->
 	<!-- <a href="#!/clientes">Clientes</a> -->  <!-- Quando você coloca o #! no link, você está indicando que ele não chama o servidor e buscará o mapeamento do Angular na configuração de rotas (ver o arquivo cliente-controller.js) -->
 <!-- 	<a href="#!/cidade">Cidade</a> -->
 <!-- 	<a href="#!/estado">Estado</a> -->
 	
+	Path: {{$location.path()}}<br />
+	Template URL: {{$route.current.templateUrl}}<br />
+	Parâmetros: {{$routeParams}}<br />
 	<a href="/clientes">Cidade</a> <!-- Depois que você passa a injetar o locationService na configuração do seu módulo, você pode setar a operação em html5 e tirar o #! da URL. -->
 	<a href="/cidade">Cidade</a>
 	<a href="/estado">Estado</a>
 	
-	Rota: {{}}
 	<!-- A div abaixo é o espaço que está preparado para o Angular colocar as views que são carregadas pelo mapeamento de rotas -->
 	<!-- Teoricamente você precisa apenas usar a diretiva ng-view sem nenhum parâmetro. Neste caso o '="ng-view"' existe por causa do Spring que vai reclamar se isto não existir (ou seja: você pode por qualquer coisa ali dentro) -->
 	<!-- É tipo o "include" do Angular -->
