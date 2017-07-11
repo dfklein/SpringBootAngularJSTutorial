@@ -1,14 +1,49 @@
 <!-- Existem duas formas de declarar o controller: no html (como na linha abaixo) ou no JavaScript (veja o arquivo cliente-controller.js) -->
 <!-- <div ng-controller="clienteController"> -->
-
+<<style>
+<!--
+fieldset {
+	display: inline;
+}
+-->
+</style>
+<p></p>
 <div>
 Oi :D {{cliente.nome}} <br/>
+<form novalidate="novalidate" name="frmCliente"> <!-- o "novalidate" � utilizado para desabilitar as valida��es do html5 -->
 
-<input type="text" ng-model="cliente.nome"/>
+	<div>
+		<label for="campoNome">Nome:</label>
+<!-- 		<input type="text" name="campoNome" ng-model="cliente.nome" ng-minlength="2" ng-maxlength="10" required="required"/> -->
+		<span ng-show="frmCliente.campoNome.$error.required && frmCliente.campoNome.$dirty">Campo "nome" é de preenchimento obrigatório</span>
+		<span ng-show="frmCliente.campoNome.$error.minlength && frmCliente.campoNome.$dirty">Campo "nome" tem que ter mais de dois caracteres</span>
+	</div>	
+	<div>
+		<label for="campoEmail">E-mail:</label>
+		<input type="email" name="campoEmail" ng-model="cliente.email" required="required"/>
+		<span ng-show="frmCliente.campoEmail.$error.required && frmCliente.campoEmail.$dirty">Campo "e-mail" é de preenchimento obrigatório</span>
+		<span ng-show="frmCliente.campoEmail.$error.email && frmCliente.campoEmail.$dirty">E-mail inválido</span>
+	</div>	
+	
+	<input type="button" ng-disabled="frmCliente.$invalid" value="Salvar" ng-click="salvarCliente()"/>
+<!-- 	A linha abaixo é só para você saber que se você usasse alguma propriedade do html para fazer a validação você precisaria utilizar angular expression. -->
+<!-- 	<input type="button" disabled="{{frmCliente.campoNome.$invalid}}" value="Salvar" ng-click="salvarCliente()"/> -->
+	<input type="button" value="Cancelar" ng-click="cancelarAlteracaoCliente()"/>
+	
+	<fieldset>
+		<legend>Formulário</legend>
+		Valido: {{frmCliente.$valid}}
+	</fieldset>
+	<fieldset>
+		<legend>Campo nome</legend>
+		Campo nome válido: {{frmCliente.campoNome.$valid}}<br>
+		Invalid: {{frmCliente.campoNome.$invalid}}<br><!-- É só o oposto do valid. -->
+		Pristine: {{frmCliente.campoNome.$pristine}}<br><!-- Prestine é um boolean que diz se um formulário ou um campo está no modo primitivo, "virgem" -->
+		Dirty: {{frmCliente.campoNome.$dirty}}<br><!-- Ele é o contrário do pristine: indica se o campo já foi usado. -->
+		Touched: {{frmCliente.campoNome.$touched}}<br><!-- Isso é true se você tiver passado pelo campo. É diferente porque apenas ter passado o foco pelo campo, mesmo sem fazer nada, já o configura como true. -->
+	</fieldset>
 
-<input type="button" value="Salvar" ng-click="salvarCliente()"/>
-<input type="button" value="Cancelar" ng-click="cancelarAlteracaoCliente()"/>
-
+</form>
 <div ng-repeat="cli in clientes">
 	{{cli.id + '|' + cli.nome}} 
 	<input type="button" value="Excluir" ng-click="excluirCliente(cli)"/> 

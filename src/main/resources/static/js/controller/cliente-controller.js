@@ -39,19 +39,26 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope �
 	}
 	
 	$scope.salvarCliente = function() {
-		$http({
-			method:'POST',
-			url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/',
-			data:$scope.cliente
-		}).then(function (response){
-//			$scope.clientes.push(response.data);
-			$scope.carregarClientes();
-			$scope.cancelarAlteracao();
-		}, function (response) {
-			console.log(response.data);
-			console.log(response.status);
-			
-		});
+		if ($scope.frmCliente.$invalid) { // todos os elementos que você declara com "name" no html é adicionado ao escopo com uma variável de mesmo nome.
+			$http({
+				method:'POST',
+				url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/',
+				data:$scope.cliente
+			}).then(function (response){
+	//			$scope.clientes.push(response.data);
+				$scope.carregarClientes();
+				$scope.cancelarAlteracao();
+				$scope.frmCliente.$setPristine(true);
+			}, function (response) {
+				console.log(response.data);
+				console.log(response.status);
+				
+			});
+		
+		
+		} else {
+			window.alert('Erro de validação');
+		}
 	}
 	
 	$scope.excluirCliente = function(cliente) {
