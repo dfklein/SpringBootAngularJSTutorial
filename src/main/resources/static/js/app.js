@@ -32,6 +32,11 @@ appCliente.config(function($routeProvider, $locationProvider){
 		controller:'estadoController'
 			
 	})
+	.when('/login', {
+		templateUrl:'SpringBootAngularJSTutorial/view/login.html',
+		controller:'loginController'
+			
+	})
 	// o otherwise seria um tipo de "else" para a declaração de rotas, onde você passa a url que será direcionado caso haja uma requisição para uma rota inexistente.
 	.otherwise({
 		redirectTo:'/'

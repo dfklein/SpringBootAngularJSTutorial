@@ -36,6 +36,8 @@ public class ClienteController {
 
 	}
 	
+			
+	
 	@RequestMapping(method=RequestMethod.GET, value="/clientes", produces=MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity<Collection<Cliente>> buscarTodosClientes() {
 		Collection<Cliente> clientesBuscados = clienteService.buscarTodos();
