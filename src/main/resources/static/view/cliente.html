@@ -14,7 +14,7 @@ Oi :D {{cliente.nome}} <br/>
 
 	<div>
 		<label for="campoNome">Nome:</label>
-<!-- 		<input type="text" name="campoNome" ng-model="cliente.nome" ng-minlength="2" ng-maxlength="10" required="required"/> -->
+		<input type="text" name="campoNome" ng-model="cliente.nome" ng-minlength="2" ng-maxlength="10" required="required"/>
 		<span ng-show="frmCliente.campoNome.$error.required && frmCliente.campoNome.$dirty">Campo "nome" é de preenchimento obrigatório</span>
 		<span ng-show="frmCliente.campoNome.$error.minlength && frmCliente.campoNome.$dirty">Campo "nome" tem que ter mais de dois caracteres</span>
 	</div>	

@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.com.klein.denis.ws.model.Cliente;
 import br.com.klein.denis.ws.service.ClienteService;
 
-@RestController
+@RestController("/privado")
 public class ClienteController {
 
 	@Autowired
