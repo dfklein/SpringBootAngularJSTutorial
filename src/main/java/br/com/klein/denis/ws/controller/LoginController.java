@@ -64,7 +64,7 @@ public class LoginController {
 				.signWith(SignatureAlgorithm.HS512, "chavecriptografia") // o primeiro argumento é o algoritmo de segurança para gerar a criptografia. O segundo é a chave de segurança para decriptar o objeto.
 //				.signWith(SignatureAlgorithm.HS256, base64SecretBytes)
 //				.setAudience(arg0) // no curso ele não mostra isto, mas aqui é onde você passa os permissionamentos contidos no seu token
-				.setExpiration(new Date(System.currentTimeMillis() + 5 * 60 * 1000)) // você passa em um objeto tipo Date o período de validade deste token.
+				.setExpiration(new Date(System.currentTimeMillis() + 1 * 60 * 1000)) // você passa em um objeto tipo Date o período de validade deste token.
 				.compact(); // transforma o objeto encriptado em String.
 		
 		return new LoginResponse(token);

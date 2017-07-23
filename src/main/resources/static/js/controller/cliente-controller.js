@@ -24,7 +24,7 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope �
 	$scope.carregarClientes = function() {
 		$http({
 			method:'GET',
-			url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/'
+			url:'http://localhost:8080/SpringBootAngularJSTutorial/admin/clientes/'
 				//Você passa dois parâmetros: uma função de sucesso do callback e outr de exceção.
 		}).then(function successCallBack(response){
 			console.log(response.data);
@@ -42,7 +42,7 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope �
 		if ($scope.frmCliente.$invalid) { // todos os elementos que você declara com "name" no html é adicionado ao escopo com uma variável de mesmo nome.
 			$http({
 				method:'POST',
-				url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/',
+				url:'http://localhost:8080/SpringBootAngularJSTutorial/admin/clientes/',
 				data:$scope.cliente
 			}).then(function (response){
 	//			$scope.clientes.push(response.data);
@@ -64,7 +64,7 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope �
 	$scope.excluirCliente = function(cliente) {
 		$http({
 			method:'DELETE',
-			url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/' + cliente.id,
+			url:'http://localhost:8080/SpringBootAngularJSTutorial/admin/clientes/' + cliente.id,
 			data:$scope.cliente
 		}).then(function (response){
 			var pos = $scope.clientes.indexOf(cliente);
@@ -83,7 +83,7 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope �
 		
 //		$http({
 //			method:'DELETE',
-//			url:'http://localhost:8080/SpringBootAngularJSTutorial/clientes/' + cliente.id,
+//			url:'http://localhost:8080/SpringBootAngularJSTutorial/admin/clientes/' + cliente.id,
 //			data:$scope.cliente
 //		}).then(function (response){
 //			var pos = $scope.clientes.indexOf(cliente);
