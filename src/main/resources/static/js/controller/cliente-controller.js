@@ -22,6 +22,8 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope �
 	$scope.cliente={}
 	
 	$scope.carregarClientes = function() {
+		token = localStorage.getItem("userToken");
+		$http.defaults.headers.common.Authorization = 'Bearer ' + token;
 		$http({
 			method:'GET',
 			url:'http://localhost:8080/SpringBootAngularJSTutorial/admin/clientes/'
@@ -39,7 +41,9 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope �
 	}
 	
 	$scope.salvarCliente = function() {
-		if ($scope.frmCliente.$invalid) { // todos os elementos que você declara com "name" no html é adicionado ao escopo com uma variável de mesmo nome.
+		if ($scope.frmCliente.$valid) { // todos os elementos que você declara com "name" no html é adicionado ao escopo com uma variável de mesmo nome.
+			token = localStorage.getItem("userToken");
+			$http.defaults.headers.common.Authorization = 'Bearer ' + token;
 			$http({
 				method:'POST',
 				url:'http://localhost:8080/SpringBootAngularJSTutorial/admin/clientes/',
@@ -56,9 +60,10 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope �
 			});
 		
 		
-		} else {
-			window.alert('Erro de validação');
-		}
+		} 
+//		else {
+//			window.alert('Erro de validação');
+//		}
 	}
 	
 	$scope.excluirCliente = function(cliente) {

@@ -14,6 +14,9 @@ appCliente.controller('loginController', function($scope, $http) {
 		$http.post("/SpringBootAngularJSTutorial/autenticar", $scope.usuario).then(
 				function success(response) {
 					$scope.token = response.data.token;
+					localStorage.setItem("userToken", response.data.token);
+					
+					// você precisa armazenar este token em um lugar acessível para outros controllers. Pode ser no storage do navegador ou via cookies.
 					
 				},
 				

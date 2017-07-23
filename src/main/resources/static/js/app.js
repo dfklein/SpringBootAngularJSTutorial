@@ -42,7 +42,7 @@ appCliente.config(function($routeProvider, $locationProvider){
 		redirectTo:'/'
 	});
 	
-	// as duas linhas abaixo eliminam o #! da URL nas chamadas sem requisição para o servidor.
+	// as duas linhas abaixo eliminam o #!(versão 1.6.X do Angular) ou #(outras versões) da URL nas chamadas sem requisição para o servidor.
 	$locationProvider.hashPrefix('');
 	$locationProvider.html5Mode(true);
 

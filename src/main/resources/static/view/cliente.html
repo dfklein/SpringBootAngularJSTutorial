@@ -1,6 +1,6 @@
 <!-- Existem duas formas de declarar o controller: no html (como na linha abaixo) ou no JavaScript (veja o arquivo cliente-controller.js) -->
 <!-- <div ng-controller="clienteController"> -->
-<<style>
+<style>
 <!--
 fieldset {
 	display: inline;
@@ -20,7 +20,7 @@ Oi :D {{cliente.nome}} <br/>
 	</div>	
 	<div>
 		<label for="campoEmail">E-mail:</label>
-		<input type="email" name="campoEmail" ng-model="cliente.email" required="required"/>
+		<input type="text" name="campoEmail" ng-model="cliente.email" required="required"/>
 		<span ng-show="frmCliente.campoEmail.$error.required && frmCliente.campoEmail.$dirty">Campo "e-mail" é de preenchimento obrigatório</span>
 		<span ng-show="frmCliente.campoEmail.$error.email && frmCliente.campoEmail.$dirty">E-mail inválido</span>
 	</div>	

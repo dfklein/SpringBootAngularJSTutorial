@@ -28,7 +28,7 @@ public class TokenFilter extends GenericFilterBean {
 		
 		HttpServletRequest req = (HttpServletRequest) request;
 		
-		String header = req.getHeader("Authorization");
+		String header = req.getHeader("Authorization"); // esta é a chave de um valor do header onde você vai colocar o token para todas as requisiçoes com o token vindo do Angular.
 		
 		if(header == null || !header.startsWith("Bearer ")) {
 			throw new ServletException("Token inexistente ou inválido");
