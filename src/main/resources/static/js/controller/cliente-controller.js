@@ -23,7 +23,7 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope Ã
 	
 	$scope.carregarClientes = function() {
 		token = localStorage.getItem("userToken");
-		$http.defaults.headers.common.Authorization = 'Bearer ' + token;
+//		$http.defaults.headers.common.Authorization = 'Bearer ' + token;
 		$http({
 			method:'GET',
 			url:'http://localhost:8080/SpringBootAngularJSTutorial/admin/clientes/'
@@ -42,8 +42,6 @@ appCliente.controller('clienteController', function($scope, $http) { // $scope Ã
 	
 	$scope.salvarCliente = function() {
 		if ($scope.frmCliente.$valid) { // todos os elementos que vocÃª declara com "name" no html Ã© adicionado ao escopo com uma variÃ¡vel de mesmo nome.
-			token = localStorage.getItem("userToken");
-			$http.defaults.headers.common.Authorization = 'Bearer ' + token;
 			$http({
 				method:'POST',
 				url:'http://localhost:8080/SpringBootAngularJSTutorial/admin/clientes/',

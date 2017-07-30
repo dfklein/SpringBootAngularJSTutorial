@@ -47,3 +47,8 @@ appCliente.config(function($routeProvider, $locationProvider){
 	$locationProvider.html5Mode(true);
 
 });
+
+// Aqui é onde o interceptor é registrado
+appCliente.config(function($httpProvider) {
+	$httpProvider.interceptors.push('tokenInterceptor');
+});

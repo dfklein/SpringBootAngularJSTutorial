@@ -13,6 +13,7 @@ public class SpringBootAngularJsTutorialApplication extends SpringBootServletIni
 	
 	@Bean
 	public FilterRegistrationBean filtroJwt() {
+		System.out.println("*********** Servlet initializer ***********");
 		FilterRegistrationBean frb = new FilterRegistrationBean();
 		frb.setFilter(new TokenFilter());
 		frb.addUrlPatterns("/admin/*"); // define o pattern para o qual este filtro será utilizado

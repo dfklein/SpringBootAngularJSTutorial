@@ -7,6 +7,7 @@ import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.filter.GenericFilterBean;
 
@@ -41,15 +42,25 @@ public class TokenFilter extends GenericFilterBean {
 			Jwts.parser().setSigningKey("chavecriptografia").parseClaimsJws(token).getBody();
 		} catch (ExpiredJwtException e) {
 			e.printStackTrace();
+			throw new ServletException("Token inválido ExpiredJwtException");
 		} catch (UnsupportedJwtException e) {
 			e.printStackTrace();
+			throw new ServletException("Token inválido UnsupportedJwtException");
 		} catch (MalformedJwtException e) {
 			e.printStackTrace();
+			throw new ServletException("Token inválido MalformedJwtException");
 		} catch (SignatureException e) {
 			e.printStackTrace();
-			throw new ServletException("Token inválido");
+			throw new ServletException("Token inválido SignatureException");
 		} catch (IllegalArgumentException e) {
 			e.printStackTrace();
+			throw new ServletException("Token inválido IllegalArgumentException");
+		} catch (Exception e) {
+			e.printStackTrace();
+			throw new ServletException("Token inválido Exception");
+		} finally {
+			((HttpServletResponse) response).sendError(HttpServletResponse.SC_UNAUTHORIZED, "Não autorizado"); // este é  cara que lança o erro 401 que você busca no token-interceptor.js
+			
 		}
 		
 		chain.doFilter(request, response); // é o comando que permite que o filtro continue a execução da requisição
